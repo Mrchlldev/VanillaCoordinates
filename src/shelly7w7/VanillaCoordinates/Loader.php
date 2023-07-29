@@ -5,6 +5,7 @@ namespace shelly7w7\VanillaCoordinates;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\SingletonTrait;
 use shelly7w7\VanillaCoordinates\command\CoordinateCommand;
 
@@ -23,5 +24,10 @@ class Loader extends PluginBase {
 
 		$this->getServer()->getCommandMap()->register("vanillacoordinates", new CoordinateCommand());
 	}
+	public function onJoin(PlayerJoinEvent $event){
+		$pk = new GameRulesChangedPacket();
+        	$pk->gameRules = ["showcoordinates" => new BoolGameRule(true, false)];
+	}
+	
 
 }
