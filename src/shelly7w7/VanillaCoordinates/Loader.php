@@ -32,7 +32,6 @@ class Loader extends PluginBase {
 		$pk = new GameRulesChangedPacket();
         	$pk->gameRules = ["showcoordinates" => new BoolGameRule(true, false)];
 		$player->getNetworkSession()->sendDataPacket($pk);
-		$
 	}
 	
 
